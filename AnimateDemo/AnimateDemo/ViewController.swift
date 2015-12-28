@@ -25,7 +25,8 @@ class ViewController: UIViewController {
         //Animate.animateViewsRight([view1, view2, view3], _intoView: self.view, _y: 50, _space: 50)
         //Animate.animateViewsLeft([view1, view2, view3], _intoView: self.view, _y: 50, _space: 50)
         //Animate.animateViewsUp([view1, view2, view3], _intoView: self.view, _topLimit: 50, _space: 25)
-        Animate.animatePopUpBoundries(view1, _intoView: self.view)
+        Animate.popIn(view1, _intoView: self.view)
+        Animate.popOut(view1, _intoView: self.view)
     }
 
     override func didReceiveMemoryWarning() {

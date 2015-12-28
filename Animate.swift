@@ -3,7 +3,7 @@ import UIKit
 class Animate {
     
     //Up
-    class func animateViewsUp(_views:[UIView], _intoView:UIView, _topLimit:CGFloat, _space:CGFloat) {
+    class func viewsUp(_views:[UIView], _intoView:UIView, _topLimit:CGFloat, _space:CGFloat) {
         let topDist = _intoView.frame.size.height
         _views.forEach {
             $0.frame.origin = CGPoint(x: _intoView.frame.size.width/2 - $0.frame.size.width/2, y: topDist)
@@ -12,7 +12,7 @@ class Animate {
         _intoView.layoutIfNeeded()
     }
     
-    class func animateViewUp(_view:UIView, _intoView:UIView, _topLimit:CGFloat) {
+    class func viewUp(_view:UIView, _intoView:UIView, _topLimit:CGFloat) {
         let topDist = _intoView.frame.size.height
         _view.frame.origin = CGPoint(x: _intoView.frame.size.width/2 - _view.frame.size.width/2, y: topDist)
         Animate.animateUp([_view], _intoView: _intoView, _topLimit: _topLimit, _space: 0.0, delay: 0.0, counter: 0)
@@ -42,7 +42,7 @@ class Animate {
     }
     
     //Down
-    class func animateViewsDown(_views:[UIView], _intoView:UIView, _botLimit:CGFloat, _space:CGFloat) {
+    class func viewsDown(_views:[UIView], _intoView:UIView, _botLimit:CGFloat, _space:CGFloat) {
         var auxArray:[UIView] = []
         _views.forEach {
             $0.frame.origin = CGPoint(x: _intoView.frame.size.width/2 - $0.frame.size.width/2, y: -$0.frame.size.height)
@@ -52,7 +52,7 @@ class Animate {
         _intoView.layoutIfNeeded()
     }
     
-    class func animateViewDown(_view:UIView, _intoView:UIView, _botLimit:CGFloat) {
+    class func viewDown(_view:UIView, _intoView:UIView, _botLimit:CGFloat) {
         _view.frame.origin = CGPoint(x: _intoView.frame.size.width/2 - _view.frame.size.width/2, y: -_view.frame.size.height)
         Animate.animateDown([_view], _intoView: _intoView, _botLimit: _botLimit, _space: 0.0, delay: 0.0, counter: 0)
         _intoView.layoutIfNeeded()
@@ -81,7 +81,7 @@ class Animate {
     }
     
     //Left
-    class func animateViewsLeft(_views:[UIView], _intoView:UIView, _y:CGFloat, _space:CGFloat) {
+    class func viewsLeft(_views:[UIView], _intoView:UIView, _y:CGFloat, _space:CGFloat) {
         var auxY = _y
         _views.forEach {
             $0.frame.origin = CGPoint(x: _intoView.frame.size.width, y: auxY)
@@ -91,7 +91,7 @@ class Animate {
         _intoView.layoutIfNeeded()
     }
     
-    class func animateViewLeft(_view:UIView, _intoView:UIView, _y:CGFloat) {
+    class func viewLeft(_view:UIView, _intoView:UIView, _y:CGFloat) {
         var auxY = _y
         _view.frame.origin = CGPoint(x: _intoView.frame.size.width, y: auxY)
         auxY += (0.0 + _view.frame.size.height)
@@ -120,7 +120,7 @@ class Animate {
     }
     
     //Right
-    class func animateViewsRight(_views:[UIView], _intoView:UIView, _y:CGFloat, _space:CGFloat) {
+    class func viewsRight(_views:[UIView], _intoView:UIView, _y:CGFloat, _space:CGFloat) {
         var auxY = _y
         _views.forEach {
             $0.frame.origin = CGPoint(x: -$0.frame.size.width, y: auxY)
@@ -130,7 +130,7 @@ class Animate {
         _intoView.layoutIfNeeded()
     }
     
-    class func animateViewRight(_view:UIView, _intoView:UIView, _y:CGFloat) {
+    class func viewRight(_view:UIView, _intoView:UIView, _y:CGFloat) {
         var auxY = _y
         _view.frame.origin = CGPoint(x: -_view.frame.size.width, y: auxY)
         auxY += (0.0 + _view.frame.size.height)
@@ -161,7 +161,7 @@ class Animate {
     }
     
     //Popup
-    class func animatePopUp(_view:UIView, _intoView:UIView) {
+    class func popIn(_view:UIView, _intoView:UIView) {
         let rect = _view.frame
         _view.frame = CGRect(x: rect.size.width/2, y: rect.size.height/2, width: 0, height: 0)
         _intoView.addSubview(_view)
@@ -175,5 +175,13 @@ class Animate {
             }, completion: { result in
                 //Finished
         })
+    }
+    
+    class func popOut(_view:UIView, _intoView:UIView) {
+        UIView.animateWithDuration(1.5, animations: { () -> Void in
+            _view.frame = CGRect(x: _view.frame.size.width/2, y: _view.frame.size.height/2, width: 0, height: 0)
+            }) { (completed) -> Void in
+                //Finished
+        }
     }
 }

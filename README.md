@@ -3,6 +3,10 @@ Easy to use View animations with swift
 
 This file contains functions for moving views up, right, left, down and also bouncing popup.
 
+All animations to directions have 2 kinds of effects.
+  - Bouncing //With bouncing effect
+  - Simple //Without special effects, only the view moving to the defined point.
+
 //UP
   - viewsUp >> Animate all views of an array up.
   - viewUp >> Animate single view up.
